@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>John Doe (AMP)</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+  <!-- Обязательный скрипт AMP -->
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <!-- AMP boilerplate (обязательный) -->
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1,end) 0s 1 normal both
+    }
+    @-webkit-keyframes -amp-start {
+      from {visibility: hidden}
+      to {visibility: visible}
+    }
+    @-moz-keyframes -amp-start {
+      from {visibility: hidden}
+      to {visibility: visible}
+    }
+    @-ms-keyframes -amp-start {
+      from {visibility: hidden}
+      to {visibility: visible}
+    }
+    @keyframes -amp-start {
+      from {visibility: hidden}
+      to {visibility: visible}
+    }
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
+  <!-- /AMP boilerplate -->
+
+  <!-- Весь CSS переносим в <style amp-custom> -->
+  <style amp-custom>
+    /* =========================
+       ПОДКЛЮЧЕНИЕ ШРИФТОВ
+       (Может быть не совместимо с AMP. Проверяйте валидацию.)
+    ========================== */
+    @font-face {
+      font-family: 'Dosis';
+      src: url('assets/fonts/Dosis/static/Dosis-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Open Sans';
+      src: url('assets/fonts/Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Open Sans';
+      src: url('assets/fonts/Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    /* Сброс и базовые стили */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #606060;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+    h1 {
+      font-family: 'Dosis', Arial, sans-serif;
+      font-size: 50px; /* Упрощённое округление "50,49px" -> 50px */
+      color: #000;
+    }
+
+    /* Контейнер */
+    .container {
+      width: 100%;
+      max-width: 1999px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .header {
+      width: 100%;
+      /* В оригинале height: 100vh;, AMP это может принять, но лучше фиксированно или responsive.
+         Для наглядности оставим 100vh. Проверяйте валидации. */
+      height: 100vh;
+
+      /* Фоновое изображение */
+      background: url("assets/images/header.png") center no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Меню */
+    .menu {
+      position: relative;
+      width: 100%;
+      max-width: 2000px;
+      height: 62px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1;
+    }
+    .menu::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("assets/images/pra_01.jpg") center no-repeat;
+      background-size: cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+    .menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 47px;
+    }
+    .menu li a {
+      font-family: 'Dosis', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #606060;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .menu_link:hover {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.2s linear;
+    }
+    .menu_link:after {
+      content:"";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      display: none;
+    }
+    .menu_link:hover:after {
+      display: block;
+    }
+
+    /* =========================
+       Раздел DISCROGRAPHY
+    ========================== */
+    .discography {
+      width: 100%;
+      /* Минимальная высота в оригинале 1728px; в AMP старайтесь гибко. Оставим как есть. */
+      min-height: 1728px;
+      background: url("assets/images/discographi.jpg") center center no-repeat;
+      background-size: cover;
+      padding: 50px 0;
+    }
+    .discography-title {
+      font-family: 'Dosis', Arial, sans-serif;
+      font-size: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #846251;
+      margin-bottom: 51px;
+      text-align: center;
+      position: relative;
+    }
+    .discography-title:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 1px;
+      background-color: #000;
+    }
+    .discography-description {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #7b8184;
+      text-align: center;
+      margin: 0 auto 100px;
+      max-width: 580px;
+      height: auto;
+    }
+
+    /* Блок альбомов (общий) */
+    .album {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .album:not(:last-child) {
+      margin-bottom: 116px;
+    }
+
+    /* Год и подзаголовок альбома */
+    .album-info {
+      text-align: left;
+      width: 200px;
+    }
+    .album-year {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #7f7f7f;
+      margin-bottom: 10px;
+    }
+    .album-line {
+      width: 502px;
+      height: 1px;
+      background-color: #000;
+      margin: 10px 0;
+    }
+    .album-subtitle {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* Контент альбома */
+    .album-content {
+      max-width: 686px;
+      margin-left: 0;
+      margin-right: 0;
+      flex-grow: 1;
+    }
+    .album-title {
+      font-family: 'Dosis', Arial, sans-serif;
+      font-size: 23px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 15px;
+    }
+    .album-description-title {
+      font-family: 'Simsun', Arial, sans-serif;
+      font-size: 23px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 15px;
+    }
+    .album-description {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #7b8184;
+      margin-bottom: 20px;
+    }
+
+    /* Кнопка (Play) */
+    .album-button {
+      margin-top: 20px;
+      text-align: left;
+    }
+    /* При наведении немного увеличиваем */
+    .album-button amp-img {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+    .album-button amp-img:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка сайта (header) -->
+  <header class="header">
+    <div class="container">
+      <nav class="menu">
+        <ul>
+          <li><a class="menu_link" href="#">ABOUT</a></li>
+          <li><a class="menu_link" href="#">DISCOGRAPHY</a></li>
+          <li><a class="menu_link" href="#">CONCERT TOURS</a></li>
+          <li><a class="menu_link" href="#">LATTER COMPOSITIONS</a></li>
+          <li><a class="menu_link" href="#">NEW TRACKS</a></li>
+          <li><a class="menu_link" href="#">UPCOMING EVENTS</a></li>
+          <li><a class="menu_link" href="#">HISTORY</a></li>
+          <li><a class="menu_link" href="#">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Раздел Discography -->
+  <section class="discography">
+    <div class="container">
+      <h2 class="discography-title">DISCOGRAPHY</h2>
+      <p class="discography-description">
+        September 4 world heard Night Visions, the first full album. He reached the 2 position in the chart Billboard 200. The single «It's Time» took 22 th place in the Billboard Hot 100, 4th in the Billboard Alternative and Billboard Rock, and now went platinum.
+      </p>
+
+      <div class="container">
+        <!-- Первый блок альбома -->
+        <div class="album">
+          <div>
+            <div class="album-year">
+              2010
+              <div class="album-line"></div>
+              <div class="album-subtitle">Hell and Silence</div>
+            </div>
+          </div>
+
+          <div class="album-content">
+            <h3 class="album-title">Hell and Silence is an EP by Las Vegas rock group</h3>
+            <p class="album-description">
+              Hell and Silence is an EP by Las Vegas rock group, released in March 2010 in the United States. It was recorded at Battle Born Studios. All songs were written by Imagine Dragons and self-produced. The EP was in part mixed by Grammy nominated engineer Mark Needham.
+              To promote the album the band performed five shows at SXSW 2010 including at the BMI Official Showcase.While at SXSW they were endorsed by Blue Microphones. They also toured the western United States with Nico Vega and Saint Motel...
+            </p>
+            <div class="album-button">
+              <!-- amp-img вместо img -->
+              <amp-img 
+                src="assets/images/Play1.png"
+                alt="Play"
+                width="196"
+                height="56"
+                layout="fixed">
+              </amp-img>
+            </div>
+          </div>
+        </div>
+
+        <!-- Второй блок альбома -->
+        <div class="album">
+          <div class="album-info">
+            <p class="album-year">2012</p>
+            <div class="album-line"></div>
+            <p class="album-subtitle">Night Visions</p>
+          </div>
+
+          <div class="album-content">
+            <h3 class="album-description-title">
+              Night Visions is the debut studio album by American rock band
+            </h3>
+            <p class="album-description">
+              It was released on September 4, 2012 through Interscope Records. The extended track was released on February 12, 2013, adding three more songs. Recorded between 2010 and 2012, the album was primarily produced by the band themselves, as well as English hip-hop producer Alex da Kid and Brandon Darner from the American indie rock group The Envy Corps. It was mastered by Joe LaPorta. According to frontman Dan Reynolds, the album took three years to finish ...
+              of the album's tracks being previously released on multiple EPs. Musically, Night Visions exhibits influences of folk, hip hop and pop.
+            </p>
+            <div class="album-button">
+              <amp-img
+                src="assets/images/Play2.png"
+                alt="Play Button"
+                width="196"
+                height="56"
+                layout="fixed">
+              </amp-img>
+            </div>
+          </div>
+        </div>
+
+        <!-- Третий блок альбома -->
+        <div class="album">
+          <div class="album-info">
+            <p class="album-year">2015</p>
+            <div class="album-line"></div>
+            <p class="album-subtitle">Smoke + Mirrors</p>
+          </div>
+          <div class="album-content">
+            <h3 class="album-description-title">
+              The album was recorded during 2014 at the band's home studio in Las Vegas, Nevada
+            </h3>
+            <p class="album-description">
+              Self-produced by members of the band along with English hip-hop producer Alexander Grant, known by his moniker Alex da Kid, the album was released by Interscope Records and Grant's KIDinaKORNER label on February 17, 2015, in the United States.
+            </p>
+            <div class="album-button">
+              <amp-img
+                src="assets/images/Play3.jpg"
+                alt="Play Button"
+                width="196"
+                height="56"
+                layout="fixed">
+              </amp-img>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /container -->
+    </div> <!-- /container -->
+  </section>
+</body>
+</html>

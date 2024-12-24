@@ -1,0 +1,272 @@
+@font-face {
+    font-family: 'Dosis';
+    src: url('../Fonts/Dosis/static/Dosis-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../Fonts/Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../Fonts/Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Дополнительные стили */
+body {
+    margin: 0;
+    font-family: 'Open Sans', Arial, sans-serif; /* Используем Open Sans по умолчанию */
+    font-size: 14px;
+    line-heigt: 1.6;
+    color: #606060;
+}
+
+h1 {
+    font-family: 'Dosis', Arial, sans-serif; /* Используем Dosis для заголовков */
+    font-size: 50,49px;
+    color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+*,
+*:before,
+*:after {
+box-sizing: border-box;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1999px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+.header {
+    width: 100%;
+    height: 100vh;
+
+    background: url("../images/header.png") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.menu {
+    position: relative;
+    width: 100%; /* Ширина фона по всей странице */
+    max-width: 2000px; /* Максимальная ширина */
+    height: 62px; /* Высота прямоугольника */
+    margin: 0 auto; /* Центрируем меню по горизонтали */
+    display: flex; /* Для выравнивания пунктов меню */
+    justify-content: space-around; /* Распределяем пункты меню */
+    align-items: center; /* Выравниваем пункты по вертикали */
+    z-index: 1;
+}
+
+.menu::before {
+    content: ''; /* Создаём пустой элемент для фона */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/pra_01.jpg") center no-repeat; /* Фон прямоугольника */
+    background-size: cover;
+    opacity: 0.3 ; /* Прозрачность фона */
+    z-index: -1; /* Устанавливаем фон позади меню */
+}
+
+.menu ul {
+    list-style: none; /* Убираем маркеры списка */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 47px; /* Расстояние между пунктами меню */
+}
+
+.menu li a {
+    font-family: 'Dosis', Arial, sans-serif;
+    font-size: 17px;
+    text-decoration: none; /* Убираем подчёркивание */
+    color: #606060; /* Цвет текста */
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.menu_link:hover {
+    color: #000000;
+    text-decoration: none;
+    transition: color .2s linear;
+}
+
+.menu_link:after {
+    content:"";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #000000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.menu_link:hover:after {
+    display: block;
+}
+
+
+
+/*Discography*/
+
+/* Раздел Discography */
+.discography {
+    width: 100%;
+    min-height: 1728px; /* Минимальная высота */
+    background: url('../images/discographi.jpg') center center no-repeat;
+    background-size: cover;
+    padding: 50px 0;
+}
+
+
+
+/* Заголовок раздела */
+.discography-title {
+    font-family: 'Dosis', Arial, sans-serif;
+    font-size: 50.49px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #846251;
+    margin-bottom: 51px;
+    text-align: center;
+    position: relative;
+}
+
+.discography-title:after {
+    content: "";
+    position: absolute; /* Абсолютное позиционирование для привязки к заголовку */
+    left: 50%; /* Центрируем по горизонтали */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translate(-50%, -50%); /* Корректируем позицию по центру */
+    width: 450px; /* Длина линии */
+    height: 1px; /* Толщина линии */
+    background-color: #000000; /* Цвет линии */
+}
+
+
+/* Описание раздела */
+.discography-description {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6; 
+    color: #7b8184;
+    text-align: center;
+    margin: 0 auto 100px; 
+    max-width: 580px; 
+    height: auto; 
+}
+
+/* Общий блок альбома */
+
+.album {
+    display: flex; /* Горизонтальное расположение */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    justify-content: space-between; /* Распределяем элементы */
+    max-width: 1200px; /* Максимальная ширина */
+    margin: 0 auto;
+}
+
+.album:not(:last-child) {
+    margin-bottom: 116px; /* Увеличиваем отступ между блоками */
+}
+
+
+
+/* Год и название альбома */
+.album-info {
+    text-align: left;
+    width: 200px; /* Ширина блока с годом и названием */
+}
+
+.album-year {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7f7f7f;
+    margin-bottom: 10px;
+}
+
+.album-line {
+    width: 502px; /* Ширина линии */
+    height: 1px;
+    background-color: #000000; /* Черный цвет линии */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+.album-subtitle {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* Описание альбома */
+.album-content {
+    max-width: 686px; /* Максимальная ширина блока описания */
+    margin-left: 0; /* Убираем ручное смещение */
+    margin-right: 0; /* Убираем ручное смещение */
+    flex-grow: 1; /* Позволяет блоку автоматически занимать свободное пространство */
+}
+
+
+.album-description-title {
+    font-family: 'Simsun', Arial, sans-serif;
+    font-size: 23px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.album-description {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7b8184;
+    margin-bottom: 20px;
+}
+
+/* Кнопка Play */
+.album-button {
+    margin-top: 20px;
+    text-align: left; /* Выравниваем кнопку под текстом */
+}
+
+.album-button img {
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Плавный переход */
+}
+
+.album-button img:hover {
+    transform: scale(1.1); /* Увеличение кнопки */
+    opacity: 0.8; /* Немного прозрачности */
+    cursor: pointer; /* Меняет курсор на указатель */
+}
+
+
+
+
